@@ -8,4 +8,12 @@ This file contain the function called conjugadoPRP that implements the PRP metho
 
 Moreover, you can specify the tolerance and the maximum number of iterations allowed.
 
-## Example:
+## Example: 
+
+```julia
+{
+  function amor()
+    a
+  end
+}
+```
