@@ -29,3 +29,7 @@ This function returns the following informations:
 - X (vector) contains the first coordinates in each estimation.
 - Y (vector) contains the second coordinates in each estimation.
 - Z (vector) contains the value of the function evaluation in each estimation.
+
+ ## Remarks:
+
+ - If error = 0, then a minimum was found
