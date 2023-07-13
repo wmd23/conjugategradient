@@ -1,3 +1,6 @@
+# Armijo.jl
+This file contain the function called armijo that calcutes a steplenght that Armijo's rule holds. 
+
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
 
