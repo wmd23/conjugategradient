@@ -11,9 +11,7 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
 ## Example: 
 
 ```julia
-{
   function amor()
     a
   end
-}
 ```
