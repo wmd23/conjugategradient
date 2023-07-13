@@ -14,7 +14,7 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
   include("testfunctions.jl")   # see testfunctions.jl for more details
   ndim = 100                    # dimension
   x = rand(ndim)
-  conjugadoPRP(x, pen_I, gradpen_I, ndim)
+  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
 ```
 
 This function returns the following informations:
@@ -22,7 +22,7 @@ This function returns the following informations:
 - x (vector) vector containing the current estimation to be minimizer.
 - fx (Float64) contain the value of objective function avaliated in the current estimation.
 - normx (Float64) contain the value of the euclidean norm of the current estimation.
-- k (Int) number of iterations.
+- iter (Int) number of iterations.
 - ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
 - counter (Int) number of the times where the gradient method was chosen.
 - fn (Int) number of function evaluations.
@@ -33,3 +33,4 @@ This function returns the following informations:
  ## Remarks:
 
  - If error = 0, then a minimum was found
+ - If ndim = 2, you can use X, Y, Z to plot the sequence on level curves, for example.
