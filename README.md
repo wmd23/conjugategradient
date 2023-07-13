@@ -1,4 +1,11 @@
 # PRPmethod.jl
-This file contain the function called conjugadoPRP. To invoke this function you need the following informations:
+This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
 
-- x
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- ∇f (function) the gradient of the objective function.
+- n (Int) dimension of the objective function.
+
+Moreover, you can specify the tolerance and the maximum number of iterations allowed.
+
+## Example:
