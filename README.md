@@ -11,7 +11,8 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
 ## Example: 
 
 ```julia
-  function amor()
-    a
-  end
+  include("testfunctions.jl")   # see testfunctions.jl for more details
+  ndim = 100                    # dimension
+  x = rand(ndim)
+  conjugadoPRP(x, pen_I, gradpen_I, ndim)
 ```
