@@ -33,6 +33,45 @@ This function returns the following informations:
 - $t > 0$.
 - $y, c1 \in (0, 1)$.
 
+# armijoPRP.jl
+This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) or the gradient method where the steplength is computated by Armijo's rule. To invoke this function you need the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- ∇f (function) the gradient of the objective function.
+- n (Int) dimension of the objective function.
+
+Moreover, you can specify the maximum number of iterations allowed the tolerance and the method.
+
+## Example: 
+
+```julia
+  include("testfunctions.jl")   # see testfunctions.jl for more details
+  ndim = 100                    # dimension
+  x = rand(ndim)
+  x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = armijoPRP(x, pen_I, gradpen_I, ndim)
+  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = armijoPRP(x, pen_I, gradpen_I, ndim, maxk = 400, \epsilon)
+```
+
+This function returns the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- fx (Float64) contain the value of objective function avaliated in the current estimation.
+- normx (Float64) contain the value of the euclidean norm of the current estimation.
+- iter (Int) number of iterations.
+- ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
+- counter (Int) number of the times where the gradient method was chosen.
+- fn (Int) number of function evaluations.
+- X (vector) contains the first coordinates in each estimation.
+- Y (vector) contains the second coordinates in each estimation.
+- Z (vector) contains the value of the function evaluation in each estimation.
+
+ ## Remarks:
+
+ - If error = 0, then a minimum was found.
+ - If ndim = 2, you can use X, Y, Z to plot the sequence on level curves, for example.
+
+
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
 
