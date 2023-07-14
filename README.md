@@ -18,7 +18,8 @@ Moreover, you can specify the inicial steplenght $t$, the contant used on the ba
   gf = gradpen_I            # this function is also in the testfunctions.jl file and gf means the gradient of f
   gradfx = gradpen_I(x)
   d = -gradfx               # we can use this d as a descent direction
-  t, iter = armijo(x, f, gradfx, d)
+  t1, iter1 = armijo(x, f, gradfx, d) # without using optional parameters
+  t2, iter2 = armijo(x, f, gradfx, d, t = 1.0, y = 0.9, c1 = 0.2) # using optional parameters
 ```
 
 This function returns the following informations:
