@@ -50,7 +50,7 @@ Moreover, you can specify the maximum number of iterations allowed the tolerance
   ndim = 100                    # dimension
   x = rand(ndim)
   x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = armijoPRP(x, pen_I, gradpen_I, ndim)
-  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = armijoPRP(x, pen_I, gradpen_I, ndim, maxk = 400, \epsilon)
+  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = armijoPRP(x, pen_I, gradpen_I, ndim, maxk = 400, $\epsilon$ = 1.e-6, method = 0)
 ```
 
 This function returns the following informations:
