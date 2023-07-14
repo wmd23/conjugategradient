@@ -11,8 +11,8 @@ Moreover, you can specify the inicial steplenght $t$, the contant used on the ba
 ## Example:
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("armijo.jl")          # see armijo.jl for more details
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("armijo.jl")          # see armijo.jl code for more details
   ndim = 100                    # dimension
   x = rand(ndim)
   f = pen_I                 # this function is in the testfunctions.jl file
@@ -47,8 +47,8 @@ Moreover, you can specify the maximum number of iterations allowed the tolerance
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("armijoPRP.jl")       # see armijoPRP.jl for more details
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("armijoPRP.jl")       # see armijoPRP.jl code for more details
   ndim = 100                    # dimension
   x = rand(ndim)
   x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = armijoPRP(x, pen_I, gradpen_I, ndim)
@@ -88,8 +88,8 @@ Moreover, you can specify the tolerance the constant used on the evaluation proc
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("cautiousDY.jl")      # see cautiousDY.jl for more details 
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("cautiousDY.jl")      # see cautiousDY.jl code for more details 
   ndim = 100                    # dimension
   x = rand(ndim)
   x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = cautious(x, pen_I, gradpen_I)
@@ -127,8 +127,8 @@ Moreover, you can specify the initial steplenght the constant used on the evalua
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("goldstein.jl")       # see goldsteinDY.jl for more details 
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("goldstein.jl")       # see goldsteinDY.jl code for more details 
   ndim = 100                    # dimension
   x = rand(ndim)
   d = -gradpen_I(x)
@@ -154,8 +154,8 @@ Moreover, you can specify the tolerance the constant used on the evaluation proc
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("goldsteinDY.jl")      # see cautiousDY.jl for more details 
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("goldsteinDY.jl")      # see cautiousDY.jl code for more details 
   ndim = 100                    # dimension
   x = rand(ndim)
   x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = goldDY(x, pen_I, gradpen_I)
@@ -193,8 +193,8 @@ Moreover, you can specify the maximum number of iterations allowed the tolerance
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
-  include("goldsteinPRP.jl")       # see armijoPRP.jl for more details
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("goldsteinPRP.jl")       # see armijoPRP.jl code for more details
   ndim = 100                    # dimension
   x = rand(ndim)
   x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = goldsteinPRP(x, pen_I, gradpen_I, ndim)
@@ -233,7 +233,7 @@ Moreover you can specify the title.
 ## Example 1:
 
 ```julia
-  include("performance_profile.jl")   # see performance_profile.jl for more details
+  include("performance_profile.jl")   # see performance_profile.jl code for more details
   x = rand(25, 3)                     # 25 problems and 3 solvers
   performance_profile(x, ["a"; "b"; "c"])
 ```
@@ -242,7 +242,7 @@ Moreover you can specify the title.
 ## Example 1:
 
 ```julia
-  include("performance_profile.jl")   # see performance_profile.jl for more details
+  include("performance_profile.jl")   # see performance_profile.jl code for more details
   x = rand(25, 3)                     # 25 problems and 3 solvers
   performance_profile(x, ["a"; "b"; "c"], t = "test_title")
 ```
@@ -265,10 +265,12 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
 ## Example: 
 
 ```julia
-  include("testfunctions.jl")   # see testfunctions.jl for more details
+  include("testfunctions.jl")   # see testfunctions.jl code for more details
+  include("PRPmethod,jl")       # see PRPmethod.jl code for more details
   ndim = 100                    # dimension
   x = rand(ndim)
-  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
+  x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = conjugadoPRP(x, pen_I, gradpen_I, ndim)
+  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = conjugadoPRP(x, pen_I, gradpen_I, ndim, maxk = 400, ϵ = 1.e-6, method = 0)
 ```
 
 This function returns the following informations:
