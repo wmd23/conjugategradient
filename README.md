@@ -237,7 +237,20 @@ Moreover you can specify the title.
   x = rand(25, 3)                     # 25 problems and 3 solvers
   performance_profile(x, ["a"; "b"; "c"])
 ```
+![alt text](https://github.com/wmd23/conjugategradient/blob/working/teste.png?raw=true)
+
+## Example 1:
+
+```julia
+  include("performance_profile.jl")   # see performance_profile.jl for more details
+  x = rand(25, 3)                     # 25 problems and 3 solvers
+  performance_profile(x, ["a"; "b"; "c"], t = "test_title")
+```
 ![alt text](https://github.com/wmd23/conjugategradient/blob/working/teste1.png?raw=true)
+
+## Remarks
+
+- the number of solvers and the number of elements in the vector S must match (because each solver will have its label).
 
 # PRPmethod.jl
 This file contains the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
