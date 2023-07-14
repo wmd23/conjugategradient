@@ -1,5 +1,12 @@
 # Armijo.jl
-This file contain the function called armijo that calcutes a steplenght that Armijo's rule holds.
+This file contain the function called armijo that calcutes a steplenght that Armijo's rule holds. To invoke this function you need the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- gradfx (Float64) the value of the gradient avaliated in the current estimation.
+- d (vector) vector containing a descent direction from the current estimation.
+
+Moreover, you can specify the inicial steplenght, the contant used on the backtracking process and the constant $f(x^k) + t $ used on the
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
