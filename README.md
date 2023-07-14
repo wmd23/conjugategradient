@@ -143,6 +143,42 @@ This function returns the following informations:
 - fn (Int) number of function evaluations.
 
 # golsdsteinDY.jl
+This file contain the function called goldDY that implements the DY method (conjugate gradient) where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- gf (function) the gradient of the objective function.
+
+Moreover, you can specify the tolerance the constant used on the evaluation process that will decide the direction taken and the maximum number of iterations allowed.
+
+## Example: 
+
+```julia
+  include("testfunctions.jl")   # see testfunctions.jl for more details
+  include("goldsteinDY.jl")      # see cautiousDY.jl for more details 
+  ndim = 100                    # dimension
+  x = rand(ndim)
+  x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = goldDY(x, pen_I, gradpen_I)
+  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = goldDY(x, pen_I, gradpen_I, ϵ = 1.e-6, ϵ1 = 0.10, maxiter=500)
+```
+
+This function returns the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- fx (Float64) contain the value of objective function avaliated in the current estimation.
+- normx (Float64) contain the value of the euclidean norm of the current estimation.
+- iter (Int) number of iterations.
+- ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
+- counter (Int) number of the times where the gradient method was chosen.
+- fn (Int) number of function evaluations.
+- X (vector) contains the first coordinates in each estimation.
+- Y (vector) contains the second coordinates in each estimation.
+- Z (vector) contains the value of the function evaluation in each estimation.
+
+## Remarks:
+
+ - If error = 0, then a minimum was found.
+ - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
