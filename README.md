@@ -69,8 +69,8 @@ This function returns the following informations:
  ## Remarks:
 
  - If error = 0, then a minimum was found.
- - If ndim = 2, you can use X, Y, Z to plot the sequence on level curves, for example.
-
+ - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
+ - $maxk \in \mathbb{N}$
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
