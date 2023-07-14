@@ -14,7 +14,11 @@ Moreover, you can specify the inicial steplenght $t$, the contant used on the ba
   include("testfunctions.jl")   # see testfunctions.jl for more details
   ndim = 100                    # dimension
   x = rand(ndim)
-  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
+  f = pen_I                 # this function is in the testfunctions.jl file
+  gf = gradpen_I            # this function is also in the testfunctions.jl file and gf means the gradient of f
+  gradfx = gradpen_I(x)
+  d = -gradfx               # we can use this d as a descent direction
+  t, iter = armijo(x, f, gradfx, d)
 ```
 
 # PRPmethod.jl
@@ -33,9 +37,7 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
   include("testfunctions.jl")   # see testfunctions.jl for more details
   ndim = 100                    # dimension
   x = rand(ndim)
-  f = pen_I                     # this function is in the testfunctions.jl file
-  gf = gradpen_I                # this function is also in the testfunctions.jl file and gf means the gradient of f
-  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, f, gf, ndim)
+  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
 ```
 
 This function returns the following informations:
