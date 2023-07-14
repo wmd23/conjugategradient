@@ -237,7 +237,7 @@ Moreover you can specify the title.
   x = rand(25, 3)                     # 25 problems and 3 solvers
   performance_profile(x, ["a"; "b"; "c"])
 ```
-![alt text](https://github.com/[wmd23]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/wmd23/conjugategradient/blob/working/teste1.png?raw=true)
 
 # PRPmethod.jl
 This file contains the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
