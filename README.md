@@ -21,6 +21,11 @@ Moreover, you can specify the inicial steplenght $t$, the contant used on the ba
   t, iter = armijo(x, f, gradfx, d)
 ```
 
+This function returns the following informations:
+
+- t (Float64) steplength which satisfies the Armijo's rule.
+- iter (Int) number of iterations.
+
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
 
