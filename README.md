@@ -29,7 +29,7 @@ This function returns the following informations:
 
 ## Remarks:
 
-- As you might know, you can use as many optional parameters to invoke you function as you want.
+- As you might know, you can use as many optional parameters to invoke the function as you want.
 - $t > 0$.
 - $y, c1 \in (0, 1)$.
 
