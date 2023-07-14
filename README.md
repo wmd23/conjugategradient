@@ -1,5 +1,5 @@
 # Armijo.jl
-This file contain the function called armijo that calcutes a steplenght that Armijo's rule holds. To invoke this function you need the following informations:
+This file contains the function called armijo that calcutes a steplenght that Armijo's rule holds. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -35,7 +35,7 @@ This function returns the following informations:
 - $y, c1 \in (0, 1)$.
 
 # armijoPRP.jl
-This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) or the gradient method where the steplength is computated by Armijo's rule. To invoke this function you need the following informations:
+This file contains the function called conjugadoPRP that implements the PRP method (conjugate gradient) or the gradient method where the steplength is computated by Armijo's rule. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -77,7 +77,7 @@ This function returns the following informations:
  - If method $\ne$ 1, then the gradient method will be choosed.
 
 # cautiousDY.jl
-This file contain the function called cautious that implements the cautious DY method. To invoke this function you need the following informations:
+This file contains the function called cautious that implements the cautious DY method. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -115,7 +115,7 @@ This function returns the following informations:
  - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
 
 # Goldstein.jl
-This file contain the function called goldstein that implements the goldstein line search. To invoke this function you need the following informations:
+This file contains the function called goldstein that implements the goldstein line search. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -143,7 +143,7 @@ This function returns the following informations:
 - fn (Int) number of function evaluations.
 
 # golsdsteinDY.jl
-This file contain the function called goldDY that implements the DY method (conjugate gradient) where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
+This file contains the function called goldDY that implements the DY method (conjugate gradient) where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -181,7 +181,7 @@ This function returns the following informations:
  - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
 
 # goldsteinPRP.jl
-This file contain the function called goldsteinPRP that implements the PRP method (conjugate gradient) or the gradient method where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
+This file contains the function called goldsteinPRP that implements the PRP method (conjugate gradient) or the gradient method where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
@@ -223,9 +223,23 @@ This function returns the following informations:
  - If method $\ne$ 1, then the gradient method will be choosed.
 
 # performance_profile.jl
+This file contains the function called performance_profile that plots the performance profile. To invoke this function you need the following informations:
+
+- v (matrix) containing the the values of time (or any other metric) of a problem i and solver j.
+- S (Vector{String}) contains the labels used.
+
+Moreover you can specify the title.
+
+## Example 1:
+
+```julia
+  include("performance_profile.jl")   # see performance_profile.jl for more details
+  x = rand(25, 3)                     # 25 problems and 3 solvers
+  performance_profile(x, ["a"; "b"; "c"])
+```
 
 # PRPmethod.jl
-This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
+This file contains the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
