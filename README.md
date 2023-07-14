@@ -17,15 +17,20 @@ Moreover, you can specify the inicial steplenght $t$, the contant used on the ba
   f = pen_I                 # this function is in the testfunctions.jl file
   gf = gradpen_I            # this function is also in the testfunctions.jl file and gf means the gradient of f
   gradfx = gradpen_I(x)
-  d = -gradfx               # we can use this d as a descent direction
-  t1, iter1 = armijo(x, f, gradfx, d) # without using optional parameters
-  t2, iter2 = armijo(x, f, gradfx, d, t = 1.0, y = 0.9, c1 = 0.2) # using optional parameters
+  d = -gradfx                                                       # we can use this d as a descent direction
+  t1, iter1 = armijo(x, f, gradfx, d)                               # without using optional parameters
+  t2, iter2 = armijo(x, f, gradfx, d, t = 1.0, y = 0.9, c1 = 0.2)   # using optional parameters
 ```
 
 This function returns the following informations:
 
 - t (Float64) steplength which satisfies the Armijo's rule.
 - iter (Int) number of iterations.
+
+## Remarks:
+
+- As you might know, you can use as many optional parameters to invoke you function as you want.
+- $t > 0$, $y, c1 \in (0, 1)$.
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
@@ -61,5 +66,5 @@ This function returns the following informations:
 
  ## Remarks:
 
- - If error = 0, then a minimum was found
+ - If error = 0, then a minimum was found.
  - If ndim = 2, you can use X, Y, Z to plot the sequence on level curves, for example.
