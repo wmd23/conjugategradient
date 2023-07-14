@@ -115,6 +115,34 @@ This function returns the following informations:
  - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
 
 # Goldstein.jl
+This file contain the function called goldstein that implements the goldstein line search. To invoke this function you need the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- ∇f (function) the gradient of the objective function.
+- d (vector) vector containing a descent direction from the current estimation.
+
+Moreover, you can specify the initial steplenght the constant used on the evaluation of Goldstein conditions and maximum number of iterations allowed.
+
+## Example: 
+
+```julia
+  include("testfunctions.jl")   # see testfunctions.jl for more details
+  include("goldstein.jl")       # see goldsteinDY.jl for more details 
+  ndim = 100                    # dimension
+  x = rand(ndim)
+  d = -gradpen_I(x)
+  t1, ierror1, fn1 = goldstein(pen_I, gradpen_I, x, d)
+  t2, ierror2, fn2 = goldstein(pen_I, gradpen_I, x, d, α = 0.5, β = 1e-5, σ = 0.2, maxiter = 500)
+```
+
+This function returns the following informations:
+
+- α (Float64) steplength which satisfies the goldstein conditions.
+- ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
+- fn (Int) number of function evaluations.
+
+# golsdsteinDY.jl
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
