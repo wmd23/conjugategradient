@@ -6,7 +6,16 @@ This file contain the function called armijo that calcutes a steplenght that Arm
 - gradfx (Float64) the value of the gradient avaliated in the current estimation.
 - d (vector) vector containing a descent direction from the current estimation.
 
-Moreover, you can specify the inicial steplenght $t$, the contant used on the backtracking process and the constant $c_1$ used on the evaluation of Armijo's rule $f(x+t\cdot d)\le f(x) + t\cdot c1\cdot \nabla f(x)^T\cdot d$
+Moreover, you can specify the inicial steplenght $t$, the contant used on the backtracking process and the constant $c_1$ used on the evaluation of Armijo's rule $f(x+t\cdot d)\le f(x) + t\cdot c1\cdot \nabla f(x)^T\cdot d$.
+
+## Example:
+
+```julia
+  include("testfunctions.jl")   # see testfunctions.jl for more details
+  ndim = 100                    # dimension
+  x = rand(ndim)
+  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
+```
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
@@ -24,7 +33,9 @@ Moreover, you can specify the tolerance and the maximum number of iterations all
   include("testfunctions.jl")   # see testfunctions.jl for more details
   ndim = 100                    # dimension
   x = rand(ndim)
-  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, pen_I, gradpen_I, ndim)
+  f = pen_I                     # this function is in the testfunctions.jl file
+  gf = gradpen_I                # this function is also in the testfunctions.jl file and gf means the gradient of f
+  x, fx, normx, iter, ierror, counter, fn, X, Y, Z = conjugadoPRP(x, f, gf, ndim)
 ```
 
 This function returns the following informations:
