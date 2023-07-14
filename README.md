@@ -30,7 +30,8 @@ This function returns the following informations:
 ## Remarks:
 
 - As you might know, you can use as many optional parameters to invoke you function as you want.
-- $t > 0$, $y, c1 \in (0, 1)$.
+- $t > 0$.
+- $y, c1 \in (0, 1)$.
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
