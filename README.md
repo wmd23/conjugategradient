@@ -6,7 +6,7 @@ This file contain the function called armijo that calcutes a steplenght that Arm
 - gradfx (Float64) the value of the gradient avaliated in the current estimation.
 - d (vector) vector containing a descent direction from the current estimation.
 
-Moreover, you can specify the inicial steplenght, the contant used on the backtracking process and the constant $c_1$ used on the evaluation of Armijo's rule $f(x+t\cdot d)\le f(x) + t\cdot c1\cdot \nabla f(x)^T\cdot d$
+Moreover, you can specify the inicial steplenght $t$, the contant used on the backtracking process and the constant $c_1$ used on the evaluation of Armijo's rule $f(x+t\cdot d)\le f(x) + t\cdot c1\cdot \nabla f(x)^T\cdot d$
 
 # PRPmethod.jl
 This file contain the function called conjugadoPRP that implements the PRP method (conjugate gradient) where the steplength is computated by strong wolfe conditions. To invoke this function you need the following informations:
