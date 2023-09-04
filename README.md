@@ -16,7 +16,7 @@ x2, fx2, normx2, iter2, t2, ierror2, serror2, gn2, fn2, X2, Y2, Z2 = goldDY(x0, 
 x3, fx3, normx3, iter3, t3, ierror3, serror3, gn3, fn3, X3, Y3, Z3 = armijoPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
 x4, fx4, normx4, iter4, t4, ierror4, serror4, gn4, fn4, X4, Y4, Z4 = goldsteinPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
 ```
-
+You only need to include these five files (armijoPRP.jl, cautiousDY.jl, goldsteinPRP.jl, goldsteinDY.jl and testfunction.jl), the first four files are algorithms to minimize $f:\mathbb{R}^n\to\mathbb{R}$
 
 
 # Armijo.jl
