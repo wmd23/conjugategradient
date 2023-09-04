@@ -1,20 +1,20 @@
 # Main.jl
-This file contains the main file which includes all the other files presented in this readme.
+This file contains the main file which includes all the other files presented in this readme. Its code is written below.
 
 ```julia
-include("armijoPRP.jl"); include("cautiousDY.jl"); include("goldsteinPRP.jl"); include("goldsteinDY.jl"); include("testfunction.jl")
+1 include("armijoPRP.jl"); include("cautiousDY.jl"); include("goldsteinPRP.jl"); include("goldsteinDY.jl"); include("testfunction.jl")
+2 
+3 f = powell                  # see testfunction.jl for more details 
+4 gf = gradpowell
+5
+6 ndim = 100                  # set the dimension
 
-f = powell                  # see testfunction.jl for more details 
-gf = gradpowell
-
-ndim = 100                  # set the dimension
-
-x0 = rand(ndim)             # set the guess
-
-x1, fx1, normx1, iter1, t1, ierror1, serror1, gn1, fn1, X1, Y1, Z1 = cautious(x0, f, gf, maxiter = 500000, ϵ1 = 0.01, ϵ = 1.0e-5)
-x2, fx2, normx2, iter2, t2, ierror2, serror2, gn2, fn2, X2, Y2, Z2 = goldDY(x0, f, gf, maxiter = 500000, ϵ1 = 0.01, ϵ = 1.0e-5)
-x3, fx3, normx3, iter3, t3, ierror3, serror3, gn3, fn3, X3, Y3, Z3 = armijoPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
-x4, fx4, normx4, iter4, t4, ierror4, serror4, gn4, fn4, X4, Y4, Z4 = goldsteinPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
+7 x0 = rand(ndim)             # set the guess
+8
+9 x1, fx1, normx1, iter1, t1, ierror1, serror1, gn1, fn1, X1, Y1, Z1 = cautious(x0, f, gf, maxiter = 500000, ϵ1 = 0.01, ϵ = 1.0e-5)
+10 x2, fx2, normx2, iter2, t2, ierror2, serror2, gn2, fn2, X2, Y2, Z2 = goldDY(x0, f, gf, maxiter = 500000, ϵ1 = 0.01, ϵ = 1.0e-5)
+11 x3, fx3, normx3, iter3, t3, ierror3, serror3, gn3, fn3, X3, Y3, Z3 = armijoPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
+12 x4, fx4, normx4, iter4, t4, ierror4, serror4, gn4, fn4, X4, Y4, Z4 = goldsteinPRP(x0, f, gf, n, maxk = 500000, method = 0, ϵ = 1.0e-5)
 ```
 
 
