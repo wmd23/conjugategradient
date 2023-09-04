@@ -2,11 +2,7 @@
 This file contains the main file which includes all the other files presented in this readme.
 
 ```julia
-include("armijoPRP.jl")
-include("cautiousDY.jl")
-include("goldsteinPRP.jl")
-include("goldsteinDY.jl")
-include("testfunction.jl")
+include("armijoPRP.jl"); include("cautiousDY.jl"); include("goldsteinPRP.jl"); include("goldsteinDY.jl"); include("testfunction.jl")
 
 f = powell                  # see testfunction.jl for more details 
 gf = gradpowell
