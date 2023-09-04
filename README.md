@@ -23,7 +23,7 @@ This file contains the function called armijo which implements the PRP method (c
 
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
-- $\nabla$x (Float64) the value of the gradient avaliated in the current estimation.
+- ∇f (Float64) the value of the gradient avaliated in the current estimation.
 - d (vector) vector containing a descent direction from the current estimation.
 
 # Armijo.jl
