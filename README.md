@@ -24,7 +24,9 @@ This file contains the function called armijo which implements the PRP method (c
 - x (vector) vector containing the current estimation to be minimizer.
 - f (function) objective function.
 - ∇f (Float64) the value of the gradient avaliated in the current estimation.
-- d (vector) vector containing a descent direction from the current estimation.
+- n (Int) dimension of the objective function.
+
+Moreover, you can specify the maximum number of iterates allowed, the tolerance given, and the value of the variable called method, which is 1 by default and with this the function will implement the PRP method, otherwise the steepest descent method.
 
 # Armijo.jl
 This file contains the function called armijo that calcutes a steplenght that Armijo's rule holds. To invoke this function you need the following informations:
