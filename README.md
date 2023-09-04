@@ -28,6 +28,43 @@ This file contains the function called armijo which implements the PRP method (c
 
 Moreover, you can specify the maximum number of iterates allowed, the tolerance given, and the value of the variable called method, which is 1 by default and with this the function will implement the PRP method, otherwise the steepest descent method.
 
+This function returns the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- fx (Float64) contain the value of objective function avaliated in the current estimation.
+- normx (Float64) contain the value of the euclidean norm of the current estimation.
+- iter (Int) number of iterations.
+- time (Float64) the time elapsed in order to solve the minimization problem.
+- ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
+- serror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - at least on one iterate the steplenght is lesser than the minimum expected (steplength too small).
+- counter (Int) number of the times where the gradient method was chosen.
+- fn (Int) number of function evaluations.
+- X (vector) contains the first coordinates in each estimation.
+- Y (vector) contains the second coordinates in each estimation.
+- Z (vector) contains the value of the function evaluation in each estimation.
+
+## Remarks:
+
+ - If ierror = 0, then a minimum was found.
+ - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
+
+# goldsteinPRP.jl
+This file contains the same funcionalities of armijoPRP.jl but uses the Goldstein's line search instead.
+
+# golsdsteinDY.jl
+This file contains the function called goldDY that implements the DY method (conjugate gradient) where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
+
+- x (vector) vector containing the current estimation to be minimizer.
+- f (function) objective function.
+- gf (function) the gradient of the objective function.
+
+Moreover, you can specify the tolerance the constant used on the evaluation process that will decide the direction taken and the maximum number of iterations allowed.
+
+This function returns the same information of the file armijoPRP.jl
+
+# cautiousDY.jl
+This file contains the same funcionalities of goldsteinDY.jl but uses the Armijo's line search instead.
+
 # Armijo.jl
 This file contains the function called armijo that calcutes a steplenght that Armijo's rule holds. To invoke this function you need the following informations:
 
@@ -37,21 +74,6 @@ This file contains the function called armijo that calcutes a steplenght that Ar
 - d (vector) vector containing a descent direction from the current estimation.
 
 Moreover, you can specify the inicial steplenght $t$, the contant used on the backtracking process and the constant $c_1$ used on the evaluation of Armijo's rule $f(x+t\cdot d)\le f(x) + t\cdot c1\cdot \nabla f(x)^T\cdot d$.
-
-## Example:
-
-```julia
-  include("testfunctions.jl")   # see testfunctions.jl code for more details
-  include("armijo.jl")          # see armijo.jl code for more details
-  ndim = 100                    # dimension
-  x = rand(ndim)
-  f = pen_I                 # this function is in the testfunctions.jl file
-  gf = gradpen_I            # this function is also in the testfunctions.jl file and gf means the gradient of f
-  gradfx = gradpen_I(x)
-  d = -gradfx                                                       # we can use this d as a descent direction
-  t1, iter1 = armijo(x, f, gradfx, d)                               # without using optional parameters
-  t2, iter2 = armijo(x, f, gradfx, d, t = 1.0, y = 0.9, c1 = 0.2)   # using optional parameters
-```
 
 This function returns the following informations:
 
@@ -74,58 +96,8 @@ This file contains the function called goldstein that implements the goldstein l
 
 Moreover, you can specify the initial steplenght the constant used on the evaluation of Goldstein conditions and maximum number of iterations allowed.
 
-## Example: 
-
-```julia
-  include("testfunctions.jl")   # see testfunctions.jl code for more details
-  include("goldstein.jl")       # see goldsteinDY.jl code for more details 
-  ndim = 100                    # dimension
-  x = rand(ndim)
-  d = -gradpen_I(x)
-  t1, ierror1, fn1 = goldstein(pen_I, gradpen_I, x, d)
-  t2, ierror2, fn2 = goldstein(pen_I, gradpen_I, x, d, α = 0.5, β = 1e-5, σ = 0.2, maxiter = 500)
-```
-
 This function returns the following informations:
 
 - α (Float64) steplength which satisfies the goldstein conditions.
 - ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
 - fn (Int) number of function evaluations.
-
-# golsdsteinDY.jl
-This file contains the function called goldDY that implements the DY method (conjugate gradient) where the steplength holds the Goldstein conditions. To invoke this function you need the following informations:
-
-- x (vector) vector containing the current estimation to be minimizer.
-- f (function) objective function.
-- gf (function) the gradient of the objective function.
-
-Moreover, you can specify the tolerance the constant used on the evaluation process that will decide the direction taken and the maximum number of iterations allowed.
-
-## Example: 
-
-```julia
-  include("testfunctions.jl")   # see testfunctions.jl code for more details
-  include("goldsteinDY.jl")      # see cautiousDY.jl code for more details 
-  ndim = 100                    # dimension
-  x = rand(ndim)
-  x1, fx1, normx1, iter1, ierror1, counter1, fn1, X1, Y1, Z1 = goldDY(x, pen_I, gradpen_I)
-  x2, fx2, normx2, iter2, ierror2, counter2, fn2, X2, Y2, Z2 = goldDY(x, pen_I, gradpen_I, ϵ = 1.e-6, ϵ1 = 0.10, maxiter=500)
-```
-
-This function returns the following informations:
-
-- x (vector) vector containing the current estimation to be minimizer.
-- fx (Float64) contain the value of objective function avaliated in the current estimation.
-- normx (Float64) contain the value of the euclidean norm of the current estimation.
-- iter (Int) number of iterations.
-- ierror (Int) the value stored in this variable tells the following messages: 0 - OK!, 1 - the maximum number of iterations has been exceeded.
-- counter (Int) number of the times where the gradient method was chosen.
-- fn (Int) number of function evaluations.
-- X (vector) contains the first coordinates in each estimation.
-- Y (vector) contains the second coordinates in each estimation.
-- Z (vector) contains the value of the function evaluation in each estimation.
-
-## Remarks:
-
- - If error = 0, then a minimum was found.
- - If ndim = 2, you can use X, Y, Z to plot the sequences on level curves, for example.
